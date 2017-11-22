@@ -88,7 +88,7 @@ class PlaneModelController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('planemodel_edit', array('id' => $planeModel->getId()));
+            return $this->redirectToRoute('planemodel_show', array('id' => $planeModel->getId()));
         }
 
         return $this->render('planemodel/edit.html.twig', array(

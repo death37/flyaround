@@ -36,13 +36,17 @@ class Reservation
     private $publicationDate;
 
     /**
-     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="reservations")
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\User", inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $passengers;
 
     /**
-     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Flight", mappedBy="reservations")
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Flight", inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $flights;
@@ -111,44 +115,6 @@ class Reservation
     public function getPublicationDate()
     {
         return $this->publicationDate;
-    }
-
-    /**
-     * Set passenger
-     *
-     * @param string $passenger
-     *
-     * @return Reservation
-     */
-    public function setPassenger($passenger)
-    {
-        $this->passenger = $passenger;
-
-        return $this;
-    }
-
-     /**
-     * Set flight
-     *
-     * @param string $flight
-     *
-     * @return Reservation
-     */
-    public function setFlight($flight)
-    {
-        $this->flight = $flight;
-
-        return $this;
-    }
-
-    /**
-     * Get flight
-     *
-     * @return string
-     */
-    public function getFlight()
-    {
-        return $this->flight;
     }
 
     /**
@@ -250,13 +216,8 @@ class Reservation
         return $this->flights;
     }
 
-    /**
-     * Get passenger
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPassenger()
+    public function __toString()
     {
-        return $this->passenger;
+        return $this->flights;
     }
 }

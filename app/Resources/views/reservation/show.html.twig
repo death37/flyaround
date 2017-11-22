@@ -19,11 +19,15 @@
             </tr>
             <tr>
                 <th>Passenger</th>
-                <td>{{ reservation.passenger }}</td>
+                {% for passenger in reservation.passengers %}
+                    <td>{{ passenger }}</td>
+                {% endfor %}
             </tr>
             <tr>
                 <th>Flight</th>
-                <td>{{ reservation.flight }}</td>
+                {% for flight in reservation.flights %}
+                    <td>{{ flight }}</td>
+                {% endfor %}
             </tr>
             <tr>
                 <th>Wasdone</th>

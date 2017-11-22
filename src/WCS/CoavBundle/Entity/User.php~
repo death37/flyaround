@@ -87,7 +87,7 @@ class User
     /**
      * @var int
      * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Review")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $reviews;
 
@@ -107,12 +107,16 @@ class User
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", inversedBy="passengers")
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", mappedBy="passengers")
      * @ORM\JoinColumn(nullable=false)
      */
     private $reservations;
 
     /**
+     * @var string
+     *
      * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Flight", mappedBy="pilot")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -552,5 +556,10 @@ class User
     public function removeReview(\WCS\CoavBundle\Entity\Review $review)
     {
         $this->reviews->removeElement($review);
+    }
+
+    public function __toString()
+    {
+        return $this->firstName . ' - ' . $this->lastName;
     }
 }

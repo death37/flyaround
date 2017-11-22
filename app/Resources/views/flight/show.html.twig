@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <th>Publicationdate</th>
-                <td>{{ flight.publicationDate }}</td>
+                <td>{{ flight.publicationDate|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
                 <th>Description</th>

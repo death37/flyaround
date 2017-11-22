@@ -29,6 +29,7 @@ class Flight
     private $departure;
 
     /**
+     * @var string
      * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Terrain", inversedBy="arrivals")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -71,6 +72,7 @@ class Flight
 
     /**
      * @var string
+     *
      * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\User", inversedBy="assignations")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -85,7 +87,9 @@ class Flight
     private $plane;
 
     /**
-     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", inversedBy="flights")
+     * @var string
+     *
+     * @ORM\ManyToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", mappedBy="flights")
      * @ORM\JoinColumn(nullable=false)
      */
     private $reservations;
@@ -386,5 +390,10 @@ class Flight
     public function getReservations()
     {
         return $this->reservations;
+    }
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->departure.' - '.$this->arrival;
     }
 }

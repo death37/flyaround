@@ -29,7 +29,7 @@
                 <td>{{ flight.nbFreeSeats }}</td>
                 <td>{{ flight.seatPrice }}</td>
                 <td>{% if flight.takeOffTime %}{{ flight.takeOffTime|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ flight.publicationDate }}</td>
+                <td>{{ flight.publicationDate|date('Y-m-d H:i:s') }}</td>
                 <td>{{ flight.description }}</td>
                 <td>{{ flight.pilot }}</td>
                 <td>{{ flight.plane }}</td>

@@ -88,7 +88,7 @@ class FlightController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('flight_edit', array('id' => $flight->getId()));
+            return $this->redirectToRoute('flight_show', array('id' => $flight->getId()));
         }
 
         return $this->render('flight/edit.html.twig', array(
